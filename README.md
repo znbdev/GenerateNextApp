@@ -84,3 +84,93 @@
 **总结:**
 
 通过以上步骤，你就可以在 Sennan 快速地创建一个基于 TypeScript 和你所选择的配置的 Next.js 工程，并开始你的开发工作了。记住根据你的具体需求和对新技术的接受程度来回答配置问题。
+
+# 工程目录结构
+
+当你使用 `create-next-app` 并选择使用 App Router 时，你的新的 Next.js 工程目录结构会如下所示。
+
+```
+my-typescript-app/
+├── .git/
+├── .gitignore
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── README.md
+└── tsconfig.json
+```
+
+**目录和文件说明:**
+
+  * **`.git/` (隐藏文件夹):**
+
+      * 这是 Git 版本控制系统的仓库。如果你在创建项目之前或期间初始化了 Git，这个文件夹会包含你的版本历史记录和配置。
+
+  * **`.gitignore`:**
+
+      * 这个文件指定了哪些文件和文件夹不应该被 Git 跟踪和提交到版本控制中。通常包含 `node_modules`, `.next`, `out` 等临时或构建生成的文件。
+
+  * **`app/` (核心目录 - App Router):**
+
+      * 这是你使用 Next.js App Router 构建应用程序的主要目录。文件和文件夹在这个目录下定义了你的应用程序的路由结构。
+          * **`layout.tsx`:**
+              * 定义了应用程序的根布局。这个布局会包裹所有的路由段（segments）和页面。你可以在这里设置全局的 UI 元素，例如导航栏、页脚等。布局在导航时会保持持久化，不会完全重新渲染，从而提供更流畅的用户体验。
+          * **`page.tsx`:**
+              * 这是应用程序根路径 (`/`) 的页面组件。在 `app` 目录下，`page.tsx` 文件用于定义该路由段的叶子页面。
+          * **`globals.css`:**
+              * 全局 CSS 文件，你可以在这里定义全局样式或者导入其他的 CSS 文件。这些样式会在整个应用程序中生效。
+
+  * **`next.config.js`:**
+
+      * Next.js 的配置文件。你可以在这里自定义 Next.js 的行为，例如配置环境变量、自定义 webpack 配置、设置图像优化选项、国际化等等。
+
+  * **`package.json`:**
+
+      * Node.js 项目的标准配置文件。它包含了项目的名称、版本、依赖包（dependencies）、开发依赖包（devDependencies）、脚本命令（例如 `dev`, `build`, `start`）等信息。
+
+  * **`postcss.config.js`:**
+
+      * PostCSS 的配置文件。PostCSS 是一个用 JavaScript 转换 CSS 的工具。通常与 Tailwind CSS 等 CSS 框架一起使用，用于处理 CSS 的转换和增强。
+
+  * **`README.md`:**
+
+      * 项目的说明文档，通常包含项目的基本信息、如何运行、如何构建等说明。你应该根据你的项目需求修改这个文件。
+
+  * **`tsconfig.json`:**
+
+      * TypeScript 的配置文件。它指定了 TypeScript 编译器的配置选项，例如目标 ECMAScript 版本、模块系统、类型检查规则等。
+
+**如果你选择了使用 Pages Router (在创建项目时选择了 "No" 使用 App Router)，你的核心目录结构会是 `pages/`：**
+
+```
+my-typescript-app/
+├── .git/
+├── .gitignore
+├── pages/
+│   ├── _app.tsx
+│   └── index.tsx
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── README.md
+└── tsconfig.json
+```
+
+在这种结构中：
+
+  * **`pages/` (核心目录 - Pages Router):**
+      * 这个目录下的每个 `.js`, `.jsx`, `.ts`, 或 `.tsx` 文件都会自动成为一个路由。例如，`pages/about.tsx` 会映射到 `/about` 路径。
+          * **`_app.tsx`:**
+              * 自定义 App 组件。它是初始化所有页面的组件。你可以在这里设置全局样式、布局持久化、处理页面间的状态等。
+          * **`index.tsx`:**
+              * 应用程序根路径 (`/`) 的页面组件。
+
+**总结 (App Router 是推荐的现代方式):**
+
+你创建的工程使用了 Next.js 的 **App Router**，它提供了一种更现代、更灵活的方式来构建你的应用程序。`app/` 目录是你的主要工作区，你将在其中创建你的路由、布局和组件。`layout.tsx` 和 `page.tsx` 是构建用户界面的基本构建块。
+
+了解这个基本的目录结构对于开始你的 Next.js 开发至关重要。随着你项目的增长，你可能会在 `app/` 目录下创建更多的文件夹来组织你的路由和组件。
